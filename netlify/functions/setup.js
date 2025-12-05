@@ -31,15 +31,3 @@ exports.handler = async () => {
     };
   }
 };
-```
-
-5. **Commit:** "Add setup function for database initialization"
-6. **Tunggu Netlify deploy selesai** (1-2 menit)
-
----
-
-# 🔧 **STEP 2: Jalankan Setup Database**
-
-Setelah deploy selesai, akses URL ini di browser:
-```
-https://YOUR_SITE_NAME.netlify.app/.netlify/functions/setup
