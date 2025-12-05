@@ -1,0 +1,58 @@
+[build]
+  publish = "src"
+  functions = "netlify/functions"
+
+# Redirect API calls ke Netlify Functions
+[[redirects]]
+  from = "/api/benefits"
+  to = "/.netlify/functions/benefits"
+  status = 200
+
+[[redirects]]
+  from = "/api/benefits/*"
+  to = "/.netlify/functions/benefits/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/howitworks"
+  to = "/.netlify/functions/howitworks"
+  status = 200
+
+[[redirects]]
+  from = "/api/howitworks/*"
+  to = "/.netlify/functions/howitworks/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/testimonials"
+  to = "/.netlify/functions/testimonials"
+  status = 200
+
+[[redirects]]
+  from = "/api/testimonials/*"
+  to = "/.netlify/functions/testimonials/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/contactinfo"
+  to = "/.netlify/functions/contactinfo"
+  status = 200
+
+[[redirects]]
+  from = "/api/contactinfo/*"
+  to = "/.netlify/functions/contactinfo/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/registrations"
+  to = "/.netlify/functions/registrations"
+  status = 200
+
+[[redirects]]
+  from = "/api/registrations/*"
+  to = "/.netlify/functions/registrations/:splat"
+  status = 200
+
+[dev]
+  functions = "netlify/functions"
+  publish = "src"
