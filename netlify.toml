@@ -3,7 +3,6 @@
   publish = "dist"
   functions = "netlify/functions"
 
-# Redirect API calls ke Netlify Functions
 [[redirects]]
   from = "/api/benefits"
   to = "/.netlify/functions/benefits"
@@ -54,7 +53,6 @@
   to = "/.netlify/functions/registrations/:splat"
   status = 200
 
-# SPA fallback - redirect semua routes ke index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -65,4 +63,3 @@
   port = 5173
   functions = "netlify/functions"
   publish = "dist"
-```
