@@ -1,9 +1,19 @@
 // Database Helper untuk Netlify Functions
 const { Pool } = require('pg');
 
+// Cek semua kemungkinan nama environment variable
+const databaseUrl = process.env.NETLIFY_DATABASE_URL || 
+                    process.env.DATABASE_URL || 
+                    process.env.NEON_DATABASE_URL;
+
+if (!databaseUrl) {
+  console.error('❌ DATABASE_URL not found in environment variables!');
+  console.error('Available env vars:', Object.keys(process.env).filter(k => k.includes('DATA')));
+}
+
 // Connection pool untuk PostgreSQL
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: databaseUrl,
   ssl: {
     rejectUnauthorized: false
   }
@@ -14,6 +24,8 @@ const initDatabase = async () => {
   const client = await pool.connect();
   
   try {
+    console.log('🚀 Initializing database...');
+    
     // Buat semua tabel
     await client.query(`
       CREATE TABLE IF NOT EXISTS benefits (
@@ -57,6 +69,8 @@ const initDatabase = async () => {
       );
     `);
 
+    console.log('✅ Tables created successfully');
+
     // Cek apakah data sudah ada
     const { rows } = await client.query('SELECT COUNT(*) as count FROM benefits');
     
@@ -97,9 +111,11 @@ const initDatabase = async () => {
       `);
 
       console.log('✅ Initial data seeded successfully');
+    } else {
+      console.log('✅ Data already exists, skipping seed');
     }
   } catch (error) {
-    console.error('Error initializing database:', error);
+    console.error('❌ Error initializing database:', error);
     throw error;
   } finally {
     client.release();
