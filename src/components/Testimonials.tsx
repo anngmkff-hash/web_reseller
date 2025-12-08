@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, Loader2, AlertCircle, Quote } from 'lucide-react'; // Menambahkan Quote
 
 // Alamat base URL API Backend kita
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 
 // --- Tipe Data ---
 
