@@ -13,13 +13,14 @@
     "init-db": "node netlify/functions/init-db.js"
   },
   "dependencies": {
+    "@netlify/neon": "^0.1.0",
     "@supabase/supabase-js": "^2.57.4",
     "firebase": "^12.4.0",
     "lucide-react": "^0.344.0",
+    "pg": "^8.11.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.9.4",
-    "pg": "^8.11.0"
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
