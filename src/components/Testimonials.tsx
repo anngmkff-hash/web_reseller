@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Star, Loader2, AlertCircle, Quote } from 'lucide-react'; // Menambahkan Quote
 
 // Alamat base URL API Backend kita
-const API_URL = '/api';
+const API_URL = ".netlify/functions";
+;
 
 // --- Tipe Data ---
 

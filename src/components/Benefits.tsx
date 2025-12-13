@@ -10,7 +10,8 @@ import {
 } from "lucide-react";
 
 // --- Konstanta API Backend ---
-const API_URL = "/api";
+const API_URL = "/.netlify/functions";
+
 
 // --- Tipe Data ---
 type BenefitFromAPI = {
