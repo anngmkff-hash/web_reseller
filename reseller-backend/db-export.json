@@ -1,0 +1,113 @@
+{
+  "benefits": [
+    {
+      "id": 1,
+      "icon": "DollarSign",
+      "title": "Komisi Besar",
+      "description": "Dapatkan persen menarik dari setiap klien yang closing"
+    },
+    {
+      "id": 2,
+      "icon": "GraduationCap",
+      "title": "Training Lengkap",
+      "description": "Kamu akan dibimbing langkah demi langkah"
+    },
+    {
+      "id": 3,
+      "icon": "Package",
+      "title": "Materi Siap Pakai",
+      "description": "Gambar, video, caption, bahkan skrip promosi sudah disediakan"
+    },
+    {
+      "id": 4,
+      "icon": "Settings",
+      "title": "Dikerjakan Tim Ahli",
+      "description": "Semua proyek dikerjakan oleh tim profesional kami"
+    },
+    {
+      "id": 5,
+      "icon": "Headphones",
+      "title": "Support Langsung",
+      "description": "Tim siap bantu kamu kapan pun butuh bantuan"
+    }
+  ],
+  "howitworks": [
+    {
+      "id": 1,
+      "icon": "UserPlus",
+      "title": "Daftar & Aktivasi Akun Reseller",
+      "description": "Bayar Rp50.000 sekali seumur hidup"
+    },
+    {
+      "id": 2,
+      "icon": "BookOpen",
+      "title": "Dapatkan Akses ke Materi Jualan",
+      "description": "Panduan lengkap dan materi promosi siap pakai"
+    },
+    {
+      "id": 3,
+      "icon": "Megaphone",
+      "title": "Promosikan Jasa ke Calon Klien",
+      "description": "Gunakan materi yang sudah disediakan"
+    },
+    {
+      "id": 4,
+      "icon": "DollarSign",
+      "title": "Dapat Komisi dari Setiap Penjualan",
+      "description": "Website & aplikasi dikerjakan oleh tim kami"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Andi",
+      "role": "Reseller Aktif",
+      "content": "Saya join cuma 50 ribu, tapi hasilnya luar biasa! Dalam sebulan dapat 3 klien dan komisi jutaan.",
+      "stars": 5,
+      "avatar": "A"
+    },
+    {
+      "id": 2,
+      "name": "Rina",
+      "role": "Freelancer Digital",
+      "content": "Semua materinya udah lengkap. Saya tinggal posting dan closing!",
+      "stars": 5,
+      "avatar": "R"
+    },
+    {
+      "id": 3,
+      "name": "Budi",
+      "role": "Mahasiswa",
+      "content": "Program ini cocok banget buat mahasiswa yang mau cari penghasilan tambahan. Gak perlu skill coding!",
+      "stars": 5,
+      "avatar": "B"
+    }
+  ],
+  "contactinfo": [
+    {
+      "id": 1,
+      "phone": "082135258087",
+      "email": "Yoga@bisnis.com",
+      "instagram": "@Yogaaa",
+      "address": "Jl. Jendral Sudirman No. 1, Jakarta"
+    }
+  ],
+  "registrations": [
+    {
+      "id": 3,
+      "fullName": "Yoga",
+      "email": "admin@example.com",
+      "whatsapp": "8785656345636",
+      "city": "dfer",
+      "created_at": "2025-10-29 02:48:02"
+    },
+    {
+      "id": 4,
+      "fullName": "rerer",
+      "email": "yogawahy454@gmail.com",
+      "whatsapp": "78467453453",
+      "city": "wdawdsefdc",
+      "created_at": "2025-10-30 03:25:27"
+    }
+  ]
+}
