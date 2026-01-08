@@ -12,11 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 /* ----------------------------------------------------------------------------
- * DATABASE (Neon / PostgreSQL)
+ * DATABASE (PostgreSQL / Neon)
  * --------------------------------------------------------------------------*/
 if (!process.env.DATABASE_URL) {
-  console.error("❌ DATABASE_URL belum di-set di .env");
-  process.exit(1);
+  throw new Error("❌ DATABASE_URL belum di-set");
 }
 
 const pool = new Pool({
@@ -24,12 +23,10 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
+// test koneksi (TIDAK mematikan process)
 pool.query("SELECT 1")
   .then(() => console.log("✅ Connected to PostgreSQL"))
-  .catch(err => {
-    console.error("❌ DB connection error:", err.message);
-    process.exit(1);
-  });
+  .catch(err => console.error("❌ DB connection error:", err.message));
 
 const q = async (sql, params = []) => {
   const { rows } = await pool.query(sql, params);
@@ -37,7 +34,7 @@ const q = async (sql, params = []) => {
 };
 
 /* ----------------------------------------------------------------------------
- * CREATE TABLES (JALANKAN SEKALI SAJA)
+ * CREATE TABLES (LOCAL ONLY)
  * --------------------------------------------------------------------------*/
 async function createTables() {
   await q(`
@@ -86,12 +83,12 @@ async function createTables() {
 }
 
 /* ----------------------------------------------------------------------------
- * SEED DATA (HANYA JIKA KOSONG)
+ * SEED DATA (LOCAL ONLY)
  * --------------------------------------------------------------------------*/
 async function seedData() {
   const [{ count }] = await q(`SELECT COUNT(*)::int AS count FROM benefits`);
   if (count > 0) {
-    console.log("✅ Data sudah ada, skip seeding");
+    console.log("✅ Data already exists, skip seeding");
     return;
   }
 
@@ -130,15 +127,7 @@ async function seedData() {
 }
 
 /* ----------------------------------------------------------------------------
- * INIT
- * --------------------------------------------------------------------------*/
-(async () => {
-  await createTables();
-  await seedData();
-})();
-
-/* ----------------------------------------------------------------------------
- * GENERIC CRUD HELPERS
+ * API ENDPOINTS
  * --------------------------------------------------------------------------*/
 const getAll = table => async (req, res) => {
   try {
@@ -164,9 +153,6 @@ const createItem = (table, cols) => async (req, res) => {
   }
 };
 
-/* ----------------------------------------------------------------------------
- * API ENDPOINTS
- * --------------------------------------------------------------------------*/
 app.get("/api/benefits", getAll("benefits"));
 app.get("/api/howitworks", getAll("howitworks"));
 app.get("/api/testimonials", getAll("testimonials"));
@@ -179,8 +165,18 @@ app.post(
 );
 
 /* ----------------------------------------------------------------------------
- * START SERVER
+ * START SERVER (LISTEN DULU — WAJIB UNTUK RAILWAY)
  * --------------------------------------------------------------------------*/
 app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`);
+  console.log(`🚀 Server running on port ${port}`);
 });
+
+/* ----------------------------------------------------------------------------
+ * INIT DB (LOCAL ONLY)
+ * --------------------------------------------------------------------------*/
+if (process.env.NODE_ENV !== "production") {
+  (async () => {
+    await createTables();
+    await seedData();
+  })();
+}
