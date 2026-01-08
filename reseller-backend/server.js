@@ -168,6 +168,14 @@ app.post(
 /* ----------------------------------------------------------------------------
  * START SERVER (LISTEN DULU — WAJIB UNTUK RAILWAY)
  * --------------------------------------------------------------------------*/
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "API is running"
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);
 });
